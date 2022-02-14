@@ -1,0 +1,1 @@
+ciao, l'elemento  é stato eliminato correttamente

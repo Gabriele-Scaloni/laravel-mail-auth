@@ -29,6 +29,9 @@ class VideogameDeleteMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+
+        return $this ->from('no-reply@sito.com')//da chi arriva la mail
+                     ->view('mail.videogameDelete');//la view che ritorna, nomeCartella.nomeFile
+                     //se si utilizza solo del testo si può usare text al posto di view
     }
 }

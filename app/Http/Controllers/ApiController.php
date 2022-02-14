@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VideogameDeleteMail;
 use Illuminate\Http\Request;
 use App\Videogame;
-
+use Illuminate\Support\Facades\Mail;
 
 class ApiController extends Controller
 {
@@ -20,6 +21,12 @@ class ApiController extends Controller
 
         $videogame = Videogame::findOrFail($id);
         $videogame -> delete();
+        //la mail va mandata dopo aver compiuto l'azione delete
+
+        Mail::to('test@test.com') -> send(new VideogameDeleteMail());//per poterli usare devo importarli sopra con 'use'
+        Mail::to('admin@sito.com') -> send(new VideogameDeleteMail());
+
         return redirect() -> route('home');
     }
+    
 }
