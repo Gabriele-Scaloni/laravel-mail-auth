@@ -8,5 +8,11 @@ Route::get('/', function () {
 });
 
 //Auth::routes();
+Route::post('/register', 'Auth\RegisterController@register')->name('register');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/home', 'GuestController@home') ->name('home');
+Route::get('api/videogames/list', 'ApiController@getVideogames') ->name('api.videogames.list');

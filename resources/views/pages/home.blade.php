@@ -1,5 +1,10 @@
 @extends('layouts.main-layout')
 
 @section('content')
-    <h2>content</h2>
+
+    <videogames-component user="{{Auth::check()}}">
+    
+
+    </videogames-component>
+
 @endsection

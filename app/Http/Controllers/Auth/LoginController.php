@@ -33,6 +33,6 @@ class LoginController extends Controller
 
         Auth::logout();
 
-        return redirect() -> view('home');
+        return redirect() -> route('home');
     }
 }

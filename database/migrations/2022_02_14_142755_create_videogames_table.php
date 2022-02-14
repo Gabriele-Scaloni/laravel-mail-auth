@@ -18,7 +18,7 @@ class CreateVideogamesTable extends Migration
             $table->id();
 
             $table -> string( 'titolo');
-            $table -> string('sottotilo');        
+            $table -> string('sottotitolo');        
             $table -> integer('rating') ->unsigned();
 
             $table->timestamps();
