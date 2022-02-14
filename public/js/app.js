@@ -1927,16 +1927,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       videogames: []
     };
   },
+  props: {
+    user: String //mi serve per sapere se siamo loggati o meno. se non sono loggato mi arriva una empy string
+    //se invece sono loggati mi arriva la stringa 
+
+  },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('api/videogames/list').then(function (r) {
+    axios.get('api/videogames/list') //chiamo axios per popolarmi l'array
+    .then(function (r) {
       return _this.videogames = r.data;
     })["catch"](function (e) {
       return console.error(e);
@@ -37538,15 +37553,40 @@ var render = function () {
     _c(
       "table",
       [
-        _vm._m(0),
+        _c("tr", [
+          _c("th", [_vm._v("ID")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("titolo")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("sottotitolo")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("rating")]),
+          _vm._v(" "),
+          _vm.user ? _c("th", [_vm._v("azione")]) : _vm._e(),
+        ]),
         _vm._v(" "),
         _vm._l(_vm.videogames, function (videogame) {
           return _c("tr", { key: videogame.id }, [
+            _c("td", [_vm._v(_vm._s(videogame.id))]),
+            _vm._v(" "),
             _c("td", [_vm._v(_vm._s(videogame.titolo))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(videogame.sottotitolo))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(videogame.rating))]),
+            _vm._v(" "),
+            _vm.user
+              ? _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn-danger",
+                      attrs: { href: "/api/videogame/delete/" + videogame.id },
+                    },
+                    [_vm._v(" Delete ")]
+                  ),
+                ])
+              : _vm._e(),
           ])
         }),
       ],
@@ -37554,20 +37594,7 @@ var render = function () {
     ),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("titolo")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("sottotitolo")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("rating")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
